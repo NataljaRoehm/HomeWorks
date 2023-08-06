@@ -6,12 +6,12 @@ public class Book implements Comparable<Book> {
 
   private final String author;
   private final String title;
-  private final int pages;
+  private final int page;
 
-  public Book(String author, String title, int pages) {
+  public Book(String author, String title, int page) {
     this.author = author;
     this.title = title;
-    this.pages = pages;
+    this.page = page;
   }
 
   public String getAuthor() {
@@ -22,8 +22,8 @@ public class Book implements Comparable<Book> {
     return title;
   }
 
-  public int getPages() {
-    return pages;
+  public int getPage() {
+    return page;
   }
 
   @Override
@@ -31,7 +31,7 @@ public class Book implements Comparable<Book> {
     return "Book{" +
         "author='" + author + '\'' +
         ", title='" + title + '\'' +
-        ", pages=" + pages +
+        ", page=" + page +
         '}';
   }
 
@@ -40,12 +40,10 @@ public class Book implements Comparable<Book> {
     if (author.compareTo(o.author) != 0) {
       return author.compareTo(o.author);
     }
-
     if (title.compareTo(o.title) != 0) {
       return title.compareTo(o.title);
     }
-
-    return Integer.compare(pages, o.pages);
+    return 0;
   }
 
   @Override
@@ -56,11 +54,18 @@ public class Book implements Comparable<Book> {
     if (!(o instanceof Book book)) {
       return false;
     }
-    return pages == book.pages && author.equals(book.author) && title.equals(book.title);
+
+    if (page != book.page) {
+      return false;
+    }
+    if (!Objects.equals(author, book.author)) {
+      return false;
+    }
+    return Objects.equals(title, book.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(author, title, pages);
+    return Objects.hash(author, title, page);
   }
 }
