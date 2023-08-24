@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
+  // Создайте список книг.
+  //
+  //Отсортируйте книги по автору, (при одинаковых авторах - по названиям)
+  // и выведите получившийся список с использованием потоков.
 
   public static void main(String[] args) {
     List<Book> books = new ArrayList<>();
