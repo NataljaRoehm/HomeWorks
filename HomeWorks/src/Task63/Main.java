@@ -19,11 +19,11 @@ public class Main {
       @Override
       public int compare(Book o1, Book o2) {
         int authorCompare = o1.getAuthor().compareTo(o2.getAuthor());
-        if (authorCompare == 0) {
-          return
-              o1.getTitle().compareTo(o2.getTitle());
+        if (authorCompare != 0) {
+          return authorCompare;
+
         }
-        return authorCompare;
+        return o1.getTitle().compareTo(o2.getTitle());
       }
     });
     for (Book book: books){
